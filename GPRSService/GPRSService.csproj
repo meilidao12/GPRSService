@@ -81,6 +81,11 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="bat\InstallService.bat" />
+    <None Include="bat\Set.ini" />
+    <None Include="bat\StartService.bat" />
+    <None Include="bat\StopService.bat" />
+    <None Include="bat\UninstallService.bat" />
     <None Include="Service References\ServiceReference1\WebService.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +127,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bat\MySql.Data.dll" />
+    <Content Include="bat\Oracle.ManagedDataAccess.dll" />
+    <Content Include="bat\YgSet.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
