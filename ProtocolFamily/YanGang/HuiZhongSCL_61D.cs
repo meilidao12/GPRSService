@@ -43,7 +43,7 @@ namespace ProtocolFamily.YanGang
                 string HourlyFlowRates =(double.Parse(RecevieData.Substring(129, 13))/10000000).ToString();
                 HourlyFlowRates = MathHelper.DoubleToHex(HourlyFlowRates);
                 //---累积流量
-                string a = (double.Parse(RecevieData.Substring(142, 13))/100).ToString();
+                string a = (double.Parse(RecevieData.Substring(142, 13))/100000).ToString();
                 string TotalFlow = MathHelper.DoubleToHex(a.ToString());
                 analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTime();
                 //CRC校验

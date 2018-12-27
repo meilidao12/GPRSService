@@ -63,7 +63,7 @@ namespace GPRSService
             {
                 return; //length=40 表示该数据是SCL_60D的握手数据
             }
-            if (Message.Length == 56) //握手数据长度  以前设置的是52
+            if (Message.Length == 52) //握手数据长度  以前设置的是52
             {
                 HandShake(socket, Message.Substring(8, 11));
                 return;
@@ -85,7 +85,7 @@ namespace GPRSService
             SendDataToClientsTimer.Interval = 60000;
             SendDataToClientsTimer.AutoReset = true;
             SendDataToClientsTimer.Elapsed += Timer_Elapsed;
-            SendDataToClientsTimer.Enabled = true;
+            //SendDataToClientsTimer.Enabled = true;
             //---
             this.PipeTimer.Interval = 1000;
             this.PipeTimer.AutoReset = true;
