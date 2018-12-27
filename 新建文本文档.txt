@@ -1,0 +1,13 @@
+cd C:\Windows\Microsoft.NET\Framework\v4.0.30319
+
+/*
+ 安装服务程序
+卸载服务程序
+启动服务程序
+*/
+InstallUtil.exe D:\程序\GPRSService\GPRSService\bin\Debug\GPRSService.exe
+InstallUtil.exe /u D:\程序\GPRSService\GPRSService\bin\Debug\GPRSService.exe
+net start Windows服务例程
+
+InstallUtil.exe D:\程序\WindowsService\WindowsService\bin\Debug\WindowsService.exe
+InstallUtil.exe D:\程序\WindowsService\WindowsService\bin\Debug\WindowsService.exe
