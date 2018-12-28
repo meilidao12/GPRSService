@@ -36,15 +36,33 @@ namespace ProtocolFamily.YanGang
             AnalysisDataModel analysisDataModel = new AnalysisDataModel();
             try
             {
-                if (RecevieData.Length != 214) throw new Exception("返回字符串长度不正确 " + RecevieData);
+                string phoneNum;
+                string HourlyFlowRates;
+                string TotalFlow;
                 //---电话号码
-                string phoneNum = RecevieData.Substring(8, 11);
-                //---瞬时流量
-                string HourlyFlowRates =(double.Parse(RecevieData.Substring(129, 13))/10000000).ToString();
-                HourlyFlowRates = MathHelper.DoubleToHex(HourlyFlowRates);
-                //---累积流量
-                string a = (double.Parse(RecevieData.Substring(142, 13))/100000).ToString();
-                string TotalFlow = MathHelper.DoubleToHex(a.ToString());
+                phoneNum = RecevieData.Substring(8, 11);
+                if(RecevieData.Length ==214)
+                {
+                    //---瞬时流量
+                    HourlyFlowRates = (double.Parse(RecevieData.Substring(129, 13)) / 10000000).ToString();
+                    HourlyFlowRates = MathHelper.DoubleToHex(HourlyFlowRates);
+                    //---累积流量
+                    string a = (double.Parse(RecevieData.Substring(142, 13)) / 100000).ToString();
+                    TotalFlow = MathHelper.DoubleToHex(a.ToString());
+                }
+                else if (RecevieData.Length == 952)
+                {
+                    //---瞬时流量
+                    HourlyFlowRates = (double.Parse(RecevieData.Substring(70, 10)) / 100000).ToString();
+                    HourlyFlowRates = MathHelper.DoubleToHex(HourlyFlowRates);
+                    //---累积流量
+                    string a = (double.Parse(RecevieData.Substring(80, 10))).ToString();
+                    TotalFlow = MathHelper.DoubleToHex(a.ToString());
+                }
+                else
+                {
+                    throw new Exception("返回字符串长度不正确 " + RecevieData);
+                }
                 analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTime();
                 //CRC校验
                 analysisDataModel.Data0 += CRC.ToModbusCRC16(analysisDataModel.Data0);
