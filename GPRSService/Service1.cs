@@ -85,7 +85,7 @@ namespace GPRSService
             SendDataToClientsTimer.Interval = 60000;
             SendDataToClientsTimer.AutoReset = true;
             SendDataToClientsTimer.Elapsed += Timer_Elapsed;
-            //SendDataToClientsTimer.Enabled = true;
+            SendDataToClientsTimer.Enabled = true;
             //---
             this.PipeTimer.Interval = 1000;
             this.PipeTimer.AutoReset = true;
@@ -117,7 +117,7 @@ namespace GPRSService
         {
             var socketClientModels = SocketClientModels;
             access.Refresh();
-            ReadFromDataBase();
+            //ReadFromDataBase();
             try
             {
                 //---------------------------------------------------------------------------------------------------------------
@@ -128,9 +128,9 @@ namespace GPRSService
                     if (protocolName != ProtocolFactory.ProtocolName.NoFind)
                     {
                         var protocol = ProtocolFactory.CreateGPRSProtocol(protocolName);
-                        //SimpleLogHelper.Instance.WriteLog(LogType.Info, string.Format("Num is {0} , Message is {1}",item.PhoneNum, protocol.ComposeSendData(item.PhoneNum)), "发送");
+                        SimpleLogHelper.Instance.WriteLog(LogType.Info, string.Format("Num is {0} , Message is {1}", item.PhoneNum, protocol.ComposeSendData(item.PhoneNum)), "发送");
                         this.SocketServer.Send(item.Socket, this.SocketServer.HexConvertToByte(protocol.ComposeSendData(item.PhoneNum)));
-                        Thread.Sleep(20);
+                        Thread.Sleep(10);
                     }
                 }
             }
