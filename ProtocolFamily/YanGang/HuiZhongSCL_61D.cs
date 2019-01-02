@@ -63,7 +63,14 @@ namespace ProtocolFamily.YanGang
                 {
                     throw new Exception("返回字符串长度不正确 " + RecevieData);
                 }
-                analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTime();
+                if(phoneNum == "18333870834")
+                {
+                    analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTimeForExample();
+                }
+                else
+                {
+                    analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTime();
+                }
                 //CRC校验
                 analysisDataModel.Data0 += CRC.ToModbusCRC16(analysisDataModel.Data0);
                 analysisDataModel.Result = AnalysisDataModel.AnalysisResult.OK;
