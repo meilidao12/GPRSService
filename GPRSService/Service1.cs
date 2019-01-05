@@ -71,6 +71,13 @@ namespace GPRSService
             else
             {
                 SimpleLogHelper.Instance.WriteLog(LogType.Info, string.Format("Num is {0} , Message is {1}", Message.Substring(8, 11), Message), "接收");
+                if(Message.Substring(8, 11) == "18333870834")
+                {
+                    if(Message.Substring(40, 4) != "0710")
+                    {
+                        return; //祥燕一次水如果不是7点10分的数据则返回不解析
+                    }
+                }
                 SendMessageToInterface(Message);
             }
         }
