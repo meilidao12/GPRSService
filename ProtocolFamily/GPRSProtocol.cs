@@ -57,7 +57,7 @@ namespace ProtocolFamily
 
         public string GetDateTimeForExample(string date)
         {
-            //string date = string.Format("{0:yyMMddHHmmss}", DateTime.Now);
+            date = string.Format("{0:yyMMddHHmmss}", DateTime.Now);
             byte[] buffer = new byte[6];
             for (int i = 0; i <= date.Length / 2 - 1; i++)
             {
@@ -66,6 +66,7 @@ namespace ProtocolFamily
             MathHelper mathHelper = new MathHelper();
             buffer[5] = 0;
             buffer[4] = 0;
+            buffer[3] = 0;
             date = mathHelper.ByteConvertToHex(buffer);
             return date;
         }
