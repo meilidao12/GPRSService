@@ -86,6 +86,7 @@
     <None Include="bat\StartService.bat" />
     <None Include="bat\StopService.bat" />
     <None Include="bat\UninstallService.bat" />
+    <None Include="bat\祥燕一次水2019-01-20 与2019-01-21.docx" />
     <None Include="Service References\ServiceReference1\WebService.wsdl" />
   </ItemGroup>
   <ItemGroup>

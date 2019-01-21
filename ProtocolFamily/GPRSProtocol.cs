@@ -54,5 +54,20 @@ namespace ProtocolFamily
             date = mathHelper.ByteConvertToHex(buffer);
             return date;
         }
+
+        public string GetDateTimeForExample(string date)
+        {
+            //string date = string.Format("{0:yyMMddHHmmss}", DateTime.Now);
+            byte[] buffer = new byte[6];
+            for (int i = 0; i <= date.Length / 2 - 1; i++)
+            {
+                buffer[i] = byte.Parse(date.Substring(i * 2, 2));
+            }
+            MathHelper mathHelper = new MathHelper();
+            buffer[5] = 0;
+            buffer[4] = 0;
+            date = mathHelper.ByteConvertToHex(buffer);
+            return date;
+        }
     }
 }

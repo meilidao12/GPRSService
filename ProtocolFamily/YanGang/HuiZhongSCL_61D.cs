@@ -53,10 +53,10 @@ namespace ProtocolFamily.YanGang
                 else if (RecevieData.Length == 952)
                 {
                     //---瞬时流量
-                    HourlyFlowRates = (double.Parse(RecevieData.Substring(70, 10)) / 100000).ToString();
+                    HourlyFlowRates = (double.Parse(RecevieData.Substring(868, 10)) / 100000).ToString();
                     HourlyFlowRates = MathHelper.DoubleToHex(HourlyFlowRates);
                     //---累积流量
-                    string a = (double.Parse(RecevieData.Substring(80, 10))).ToString();
+                    string a = (double.Parse(RecevieData.Substring(878, 10))).ToString();
                     TotalFlow = MathHelper.DoubleToHex(a.ToString());
                 }
                 else
@@ -65,7 +65,7 @@ namespace ProtocolFamily.YanGang
                 }
                 if(phoneNum == "18333870834")
                 {
-                    analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTimeForExample();
+                    analysisDataModel.Data0 = phoneNum + HourlyFlowRates + TotalFlow + GetDateTimeForExample(RecevieData.Substring(832,12));
                 }
                 else
                 {
